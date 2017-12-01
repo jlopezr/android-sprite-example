@@ -12,7 +12,7 @@ public class GameView extends SurfaceView {
     private Bitmap bmp;
     private SurfaceHolder holder;
     private GameLoopThread gameLoopThread;
-    private int x = 0;
+    private Sprite sprite;
 
     public GameView(Context context) {
         super(context);
@@ -44,16 +44,13 @@ public class GameView extends SurfaceView {
                 }
             }
         });
-        bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        //bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.bad2);
+        sprite = new Sprite(this,bmp);
     }
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
-        if (x < getWidth() - bmp.getWidth()) {
-            x++;
-        } else {
-            x = 0;
-        }
-        canvas.drawBitmap(bmp, x, 10, null);
+        sprite.onDraw(canvas);
     }
 }
