@@ -12,6 +12,5 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new GameView(this));
         //setContentView(R.layout.activity_main);
-
     }
 }

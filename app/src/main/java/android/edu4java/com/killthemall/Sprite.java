@@ -31,6 +31,8 @@ public class Sprite {
         Random rnd = new Random();
         xSpeed = rnd.nextInt(10)-5;
         ySpeed = rnd.nextInt(10)-5;
+        x = rnd.nextInt(gameView.getWidth() - width);
+        y = rnd.nextInt(gameView.getHeight() - height);
     }
 
     private void update() {
@@ -58,5 +60,9 @@ public class Sprite {
         double dirDouble = (Math.atan2(xSpeed, ySpeed) / (Math.PI / 2) + 2);
         int direction = (int) Math.round(dirDouble) % BMP_ROWS;
         return DIRECTION_TO_ANIMATION_MAP[direction];
+    }
+
+    public boolean isCollition(float x2, float y2) {
+        return x2 > x && x2 < x + width && y2 > y && y2 < y + height;
     }
 }
